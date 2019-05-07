@@ -8,10 +8,10 @@ node {
   }
   
   stage('deploy') {
-    def resourceGroup = '<myResourceGroup>'
-    def webAppName = '<myAppName>'
+    def resourceGroup = 'omkar-jenkins-rg'
+    def webAppName = 'OPWebApp'
     sh 'mv target/*.war target/ROOT.war'
-    azureWebAppPublish azureCredentialsId: '<mySp>', publishType: 'file',
+    azureWebAppPublish azureCredentialsId: 'azure_service_principal (Local MSI)', publishType: 'file',
                        resourceGroup: resourceGroup, appName: webAppName,
                        filePath: '*.war', sourceDirectory: 'target', targetDirectory: 'webapps'
   }
