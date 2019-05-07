@@ -11,7 +11,7 @@ node {
     def resourceGroup = 'omkar-jenkins-rg'
     def webAppName = 'OPWebApp'
     sh 'mv target/*.war target/ROOT.war'
-    azureWebAppPublish azureCredentialsId: 'azure_service_principal (Local MSI)', publishType: 'file',
+    azureWebAppPublish azureCredentialsId: 'azure_service_principal', publishType: 'file',
                        resourceGroup: resourceGroup, appName: webAppName,
                        filePath: '*.war', sourceDirectory: 'target', targetDirectory: 'webapps'
   }
